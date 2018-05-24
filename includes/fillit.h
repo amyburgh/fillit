@@ -6,7 +6,7 @@
 /*   By: amyburgh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 16:49:09 by amyburgh          #+#    #+#             */
-/*   Updated: 2018/05/23 23:58:32 by amyburgh         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:35:06 by amyburgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				main(int argc, char **argv);
 t_lst			*add_width_height(t_lst *list, t_lst *node);
 t_lst			*move_top_left(t_lst *list, t_lst *node);
 t_lst			*store_data(t_lst *node, char *buf, char letter);
-t_lst			*read_tet(int fd);
+t_lst			*read_tet(int fd, char *buf);
 /*
 ** ----- utilities.c -----
 */
@@ -66,7 +66,7 @@ char			*ft_strnew(size_t size);
 /*
 ** ----- validate.c -----
 */
-int				validate_block(char *bf, int bytes);
+int				validate_block(char *buf, int bytes);
 int				validate_shift(char *buf);
 /*
 ** ----- map.c -----

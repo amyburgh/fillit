@@ -6,7 +6,7 @@
 /*   By: amyburgh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:43:37 by amyburgh          #+#    #+#             */
-/*   Updated: 2018/05/24 00:10:42 by amyburgh         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:34:25 by amyburgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	main(int argc, char **argv)
 {
+	char	buf[BUFSIZE];
 	t_lst	*list;
 	t_map	*map;
 
@@ -24,9 +25,9 @@ int	main(int argc, char **argv)
 		ft_putstr("usage: fillit \033[31msource_file\033[0m\n");
 		exit(0);
 	}
-	if (!(list = read_tet(open(argv[1], O_RDONLY))))
+	if (!(list = read_tet(open(argv[1], O_RDONLY), buf)))
 	{
-		ft_putstr("\033[31merror\033[0m\n");
+		ft_putstr("error\n");
 		exit(0);
 	}
 	map = solver(list);

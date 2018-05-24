@@ -6,7 +6,7 @@
 /*   By: amyburgh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 14:10:09 by amyburgh          #+#    #+#             */
-/*   Updated: 2018/05/24 00:08:44 by amyburgh         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:44:31 by amyburgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ t_lst	*store_data(t_lst *node, char *buf, char letter)
 	return (node);
 }
 
-t_lst	*read_tet(int fd)
+t_lst	*read_tet(int fd, char *buf)
 {
-	char	buf[BUFSIZE];
 	int		bytes;
+	int		t_bytes;
 	t_lst	*list;
 	t_lst	*current;
 	char	letter;
@@ -100,19 +100,19 @@ t_lst	*read_tet(int fd)
 		return (NULL);
 	letter = 'A';
 	current = list;
-	list->width = 0;
-	list->height = 0;
+	t_bytes = 0;
 	while ((bytes = read(fd, buf, BUFSIZE)) >= 20)
 	{
 		if (validate_block(buf, bytes) && letter <= 'Z')
 			return (NULL);
 		if (!(current = store_data(current, buf, letter++)))
 			return (NULL);
+		t_bytes += bytes;
 	}
-	close(fd);
-	if ((bytes > 0 && bytes < 20) || (bytes == 0 && letter == 'A'))
+	if (!t_bytes || t_bytes != (letter - 'A') * 21 - 1)
 		return (NULL);
-	list = move_top_left(list, list);
-	list = add_width_height(list, list);
+	move_top_left(list, list);
+	add_width_height(list, list);
+	close(fd);
 	return (list);
 }
