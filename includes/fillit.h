@@ -6,7 +6,7 @@
 /*   By: amyburgh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 16:49:09 by amyburgh          #+#    #+#             */
-/*   Updated: 2018/05/24 16:35:06 by amyburgh         ###   ########.fr       */
+/*   Updated: 2018/05/24 17:01:39 by amyburgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int				main(int argc, char **argv);
 /*
 ** ----- input.c -----
 */
-t_lst			*add_width_height(t_lst *list, t_lst *node);
-t_lst			*move_top_left(t_lst *list, t_lst *node);
+void			add_width_height(t_lst *list, t_lst *node);
+void			move_top_left(t_lst *list, t_lst *node);
 t_lst			*store_data(t_lst *node, char *buf, char letter);
 t_lst			*read_tet(int fd, char *buf);
 /*

@@ -6,7 +6,7 @@
 /*   By: amyburgh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 14:10:09 by amyburgh          #+#    #+#             */
-/*   Updated: 2018/05/24 16:44:31 by amyburgh         ###   ########.fr       */
+/*   Updated: 2018/05/24 17:01:37 by amyburgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "fillit.h"
 
-t_lst	*add_width_height(t_lst *list, t_lst *node)
+void	add_width_height(t_lst *list, t_lst *node)
 {
 	int i;
 
@@ -29,10 +29,9 @@ t_lst	*add_width_height(t_lst *list, t_lst *node)
 	}
 	if (node->next)
 		add_width_height(list, node->next);
-	return (list);
 }
 
-t_lst	*move_top_left(t_lst *list, t_lst *node)
+void	move_top_left(t_lst *list, t_lst *node)
 {
 	int	i;
 	int min_x;
@@ -57,7 +56,6 @@ t_lst	*move_top_left(t_lst *list, t_lst *node)
 	}
 	if (node->next)
 		move_top_left(list, node->next);
-	return (list);
 }
 
 t_lst	*store_data(t_lst *node, char *buf, char letter)
